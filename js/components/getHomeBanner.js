@@ -1,7 +1,7 @@
 import { url } from "./baseUrl.js";
 
 export async function getHomeBanner() {
-  const response = await fetch(url + "home");
+  const response = await fetch(url + "/home");
   const json = await response.json();
 
   console.log(json);
