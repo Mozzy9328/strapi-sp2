@@ -1,4 +1,6 @@
 import { url } from "../settings/baseUrl.js";
+import { theKey } from "../settings/theKey.js";
+import { getFromStorage, saveToStorage } from "../components/localStorage.js";
 
 const detailContainer = document.querySelector(".pd-detail-container");
 
@@ -8,7 +10,7 @@ const params = new URLSearchParams(queryString);
 
 const id = params.get("id");
 
-console.log(id);
+// console.log(id);
 
 const queryUrl = url + "/products/" + id;
 
@@ -16,8 +18,9 @@ export async function fetchProduct() {
   try {
     const response = await fetch(queryUrl);
     const detail = await response.json();
-
     console.log(detail);
+
+    // console.log(detail);
 
     const allProducts = url + detail.image.url;
 
@@ -34,11 +37,48 @@ export async function fetchProduct() {
                 <p>${detail.description}</p>
             </div>
             <div class="pd-btn">
-                <a href="">Add To Cart</a>
+                <a id="add-to-cart"data-id="${detail.id}" data-title="${detail.title}" data-price="${detail.price}" data-img="${detail.image.url}" >Add To Cart</a>
                 <a href="products.html">Continue Shopping</a>
             </div>
         </div>
     `;
+
+    const addToCart = document.querySelector("#add-to-cart");
+
+    let numberOfClick = 1;
+
+    addToCart.addEventListener("click", handleClick);
+
+    function handleClick() {
+      this.classList.toggle("add");
+
+      const dataId = this.dataset.id;
+      const dataTitle = this.dataset.title;
+      const dataImage = this.dataset.img;
+      const dataPrice = this.dataset.price;
+      const quantity = numberOfClick++;
+
+      console.log(numberOfClick);
+      const currentProducts = getFromStorage(theKey);
+
+      const productExist = currentProducts.findIndex(function (products) {
+        return products.id === dataId;
+      });
+
+      if (productExist) {
+        const products = {
+          id: dataId,
+          title: dataTitle,
+          price: dataPrice,
+          image: dataImage,
+          quantity: quantity,
+        };
+
+        currentProducts.push(products);
+
+        saveToStorage(theKey, currentProducts);
+      }
+    }
   } catch (error) {
     console.log(error);
   }

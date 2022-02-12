@@ -20,19 +20,6 @@ body {
   background-color: #1f3a45;
 }
 
-main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -93,7 +80,7 @@ ul li img {
 
 .feature {
   width: 90%;
-  margin: 50px 0px 100px 0px;
+  margin: 20px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -207,7 +194,19 @@ PRODUCT DETAIL PAGE
 }
 
 .pd-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 20px auto;
+}
+
+.pd-title #search-box {
+  width: 25%;
+  margin: 0 auto;
 }
 
 .pd-title h1 {
@@ -244,6 +243,76 @@ PRODUCT DETAIL PAGE
 .pd-btn a:hover {
   background-color: #d15450;
   color: #ffff;
+}
+
+/*
+
+CART DETAIL PAGE 
+
+*/
+.cart-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 20px auto;
+}
+
+.the-product-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  grid-gap: 30px;
+}
+
+.the-product-list .product-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.the-product-list .product-group .pl-img {
+  width: 170px;
+}
+
+.the-product-list .product-group .pl-img img {
+  width: 100%;
+}
+
+.the-product-list .product-group .pl-title {
+  margin-left: 20px;
+  text-align: center;
+}
+
+.the-product-list .product-group .pl-title h2 {
+  font-size: 25px;
+  color: #ffff !important;
+}
+
+.the-product-list .product-group .pl-title h3 {
+  font-size: 20px;
+}
+
+.the-product-list .product-group .pl-title a:hover {
+  color: #d15450;
+  border-bottom: 3px solid #d15450;
+}
+
+i:hover {
+  color: #d15450;
 }
 
 footer {

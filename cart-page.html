@@ -16,7 +16,7 @@
       <header>
         <nav>
           <ul>
-            <li class="logo" style="background-color: #d15450">
+            <li class="logo">
               <img src="/public/uploads/logo.png" alt="a logo of the company" />
             </li>
             <li><a href="index.html">Home</a></li>
@@ -29,22 +29,21 @@
         <div>
           <div class="cart"></div>
         </div>
-        <div class="hero-banner">
-          <div class="index-title">
-            <h1>Sunny Daisies</h1>
-            <h2>Where people meet shoes</h2>
-          </div>
-        </div>
       </header>
       <main>
-        <h3>Featured Products</h3>
-        <div class="feature"></div>
+        <h1>Your Cart</h1>
+        <div class="cart-container">
+          <div class="the-product-list"></div>
+          <div class="sum-product-list">
+            <h2>Total Price</h2>
+            <span class="sum">Sum: 0</span>
+          </div>
+        </div>
       </main>
     </div>
     <footer>
       <p>Copyright 2022</p>
     </footer>
-
-    <script src="js/index.js" type="module"></script>
+    <script src="js/components/cartWithProduct.js" type="module"></script>
   </body>
 </html>

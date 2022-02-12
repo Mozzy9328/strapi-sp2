@@ -1,7 +1,7 @@
 import { url } from "../settings/baseUrl.js";
 
 export async function getFeaturedProducts(json) {
-  console.log(json);
+  // console.log(json);
 
   for (let i = 0; i < json.length; i++) {
     const features = document.querySelector(".feature");

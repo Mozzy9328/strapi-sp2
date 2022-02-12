@@ -17,11 +17,11 @@ body {
   background-color: $third-color;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+// main {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
 
 ul {
   display: flex;
@@ -68,7 +68,7 @@ ul {
 
 .feature {
   width: 90%;
-  margin: 50px 0px 100px 0px;
+  margin: 20px auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -147,7 +147,14 @@ PRODUCT DETAIL PAGE
 }
 
 .pd-title {
+  display: flex;
+  flex-direction: column;
   margin: 20px auto;
+
+  #search-box {
+    width: 25%;
+    margin: 0 auto;
+  }
   h1 {
     color: #ffff;
   }
@@ -178,6 +185,59 @@ PRODUCT DETAIL PAGE
       color: #ffff;
     }
   }
+}
+
+/*
+
+CART DETAIL PAGE 
+
+*/
+
+.cart-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px auto;
+}
+
+.the-product-list {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 30px;
+
+  .product-group {
+    display: flex;
+    flex-direction: row;
+    .pl-img {
+      width: 170px;
+
+      img {
+        width: 100%;
+      }
+    }
+    .pl-title {
+      margin-left: 20px;
+      text-align: center;
+
+      h2 {
+        font-size: 25px;
+        color: #ffff !important;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+
+      a:hover {
+        color: $secondary-color;
+        border-bottom: 3px solid $secondary-color;
+      }
+    }
+  }
+}
+
+i:hover {
+  color: $secondary-color;
 }
 
 footer {
