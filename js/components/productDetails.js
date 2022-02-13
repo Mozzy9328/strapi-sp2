@@ -20,8 +20,6 @@ export async function fetchProduct() {
     const detail = await response.json();
     console.log(detail);
 
-    // console.log(detail);
-
     const allProducts = url + detail.image.url;
 
     detailContainer.innerHTML += `
@@ -37,32 +35,30 @@ export async function fetchProduct() {
                 <p>${detail.description}</p>
             </div>
             <div class="pd-btn">
-                <a id="add-to-cart"data-id="${detail.id}" data-title="${detail.title}" data-price="${detail.price}" data-img="${detail.image.url}" >Add To Cart</a>
+                <a id="add-to-cart" data-id="${detail.id}" data-title="${detail.title}" data-price="${detail.price}" data-img="${detail.image.url}" >Add To Cart</a>
                 <a href="products.html">Continue Shopping</a>
             </div>
         </div>
     `;
 
     const addToCart = document.querySelector("#add-to-cart");
-
-    let numberOfClick = 1;
+    const numberOfItems = document.querySelector(".numberofitems");
 
     addToCart.addEventListener("click", handleClick);
 
     function handleClick() {
-      this.classList.toggle("add");
+      // let productItem = localStorage.getItem("product");
+      // productItem = parseInt(productItem);
 
       const dataId = this.dataset.id;
       const dataTitle = this.dataset.title;
-      const dataImage = this.dataset.img;
       const dataPrice = this.dataset.price;
-      const quantity = numberOfClick++;
+      const dataImg = url + this.dataset.img;
+      const quantity = 1;
 
-      console.log(numberOfClick);
       const currentProducts = getFromStorage(theKey);
-
       const productExist = currentProducts.findIndex(function (products) {
-        return products.id === dataId;
+        return products.title === dataTitle;
       });
 
       if (productExist) {
@@ -70,18 +66,20 @@ export async function fetchProduct() {
           id: dataId,
           title: dataTitle,
           price: dataPrice,
-          image: dataImage,
+          image: dataImg,
           quantity: quantity,
         };
-
         currentProducts.push(products);
-
         saveToStorage(theKey, currentProducts);
+      } else {
+        const newProducts = currentProducts.filter(
+          (products) => products.id !== id
+        );
+        saveToStorage(theKey, newProducts);
       }
     }
   } catch (error) {
     console.log(error);
   }
 }
-
 fetchProduct();
