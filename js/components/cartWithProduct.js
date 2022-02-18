@@ -26,23 +26,37 @@ theCart.forEach((products) => {
         </div>
     </div>
     `;
-  sumTotal(products);
 });
 
-function sumTotal(item) {
-  let cartCost = localStorage.getItem("totalCost");
-  let itemPrice = item.price;
+(function sumTotal() {
+  const allPrices = document.querySelectorAll(".pl-title h3");
 
-  if (cartCost !== null) {
-    cartCost = parseInt(cartCost);
-    localStorage.setItem("totalCost", cartCost + +itemPrice);
-  } else {
-    localStorage.setItem("totalCost", itemPrice);
-  }
-  const sum = document.querySelector(".sum");
+  allPrices.forEach(function sum(input) {
+    if (toString.call(input) !== "[object Array]") return false;
 
-  sum.innerHTML = "Sum:" + "" + cartCost;
-}
+    var total = 0;
+    for (var i = 0; i < input.length; i++) {
+      if (isNaN(input[i])) {
+        continue;
+      }
+      total += Number(input[i]);
+    }
+    return total;
+  });
+
+  // const priceOriginal = price.innerHTML.replace("€", "");
+  // console.log(priceOriginal);
+
+  // let cartCost = localStorage.getItem("totalCost");
+  // let itemPrice = item.price;
+
+  // if (cartCost !== null) {
+  //   cartCost = parseInt(cartCost);
+  //   localStorage.setItem("totalCost", cartCost + +itemPrice);
+  // } else {
+  //   localStorage.setItem("totalCost", itemPrice);
+  // }
+})();
 
 const removeButton = document.querySelectorAll(".remove-btn");
 for (let i = 0; i < removeButton.length; i++) {
