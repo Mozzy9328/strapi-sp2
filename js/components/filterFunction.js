@@ -2,7 +2,6 @@ import { getProducts } from "../components/getProducts.js";
 
 export function filterFunction(data) {
   const filter = document.querySelector("#search-box");
-
   filter.addEventListener("keyup", function () {
     const filterValue = this.value.trim().toLowerCase();
     console.log(filterValue);

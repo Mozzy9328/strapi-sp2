@@ -14,3 +14,29 @@ export function getFromStorage(key) {
 export function clearStorage() {
   localStorage.clear();
 }
+
+// USER & TOKEN
+
+const tokenKey = "token";
+const userKey = "user";
+
+export function saveUser(user) {
+  saveToStorage(userKey, user);
+}
+
+export function getUser() {
+  const user = getFromStorage(userKey);
+  if (user) {
+    return user.username;
+  } else {
+    return null;
+  }
+}
+
+export function saveToken(token) {
+  saveToStorage(tokenKey, token);
+}
+
+export function getToken() {
+  return getFromStorage(tokenKey);
+}

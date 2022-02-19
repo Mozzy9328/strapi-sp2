@@ -4,11 +4,22 @@ import { theKey } from "../settings/theKey.js";
 
 const theCart = getFromStorage(theKey);
 
-const cartContainer = document.querySelector(".the-product-list");
-theCart.forEach((products) => {
-  console.log(products);
-  const allProducts = products.image;
-  cartContainer.innerHTML += `
+const theProductList = document.querySelector(".the-product-list");
+const cartContainer = document.querySelector(".cart-container");
+
+if (!theCart.length) {
+  cartContainer.innerHTML = `
+  <div style="display:flex; flex-direction:column; text-align:center">
+    <p>There is no item added yet</p>
+    <a href="products.html" <button class="btn"> Continue Shopping </button></a>
+  </div>
+
+  `;
+} else {
+  theCart.forEach((products) => {
+    console.log(products);
+    const allProducts = products.image;
+    theProductList.innerHTML += `
     <div class="product-group">
         <div class="pl-img">
             <img src="${allProducts}"/>
@@ -16,7 +27,6 @@ theCart.forEach((products) => {
         <div class="pl-title">
             <h2>${products.title}</h1>
             <h3>€${products.price}</h2>
-            <p>Q: ${products.quantity}</p>
            <a href="product-detail.html?id=${products.id}" <button> View Product </button></a>
         </div>
         <div>
@@ -26,44 +36,27 @@ theCart.forEach((products) => {
         </div>
     </div>
     `;
-});
+    const sumValue = document.querySelector(".sum");
+    let total = 0;
 
-(function sumTotal() {
-  const allPrices = document.querySelectorAll(".pl-title h3");
+    const price = parseInt(products.price);
+    // total = total + price;
+    console.log(typeof total);
 
-  allPrices.forEach(function sum(input) {
-    if (toString.call(input) !== "[object Array]") return false;
-
-    var total = 0;
-    for (var i = 0; i < input.length; i++) {
-      if (isNaN(input[i])) {
-        continue;
-      }
-      total += Number(input[i]);
-    }
-    return total;
-  });
-
-  // const priceOriginal = price.innerHTML.replace("€", "");
-  // console.log(priceOriginal);
-
-  // let cartCost = localStorage.getItem("totalCost");
-  // let itemPrice = item.price;
-
-  // if (cartCost !== null) {
-  //   cartCost = parseInt(cartCost);
-  //   localStorage.setItem("totalCost", cartCost + +itemPrice);
-  // } else {
-  //   localStorage.setItem("totalCost", itemPrice);
-  // }
-})();
-
-const removeButton = document.querySelectorAll(".remove-btn");
-for (let i = 0; i < removeButton.length; i++) {
-  const btn = removeButton[i];
-
-  btn.addEventListener("click", function (event) {
-    btn.parentElement.parentElement.remove();
-    console.log(event.target);
+    sumValue.innerHTML += `${total}`;
   });
 }
+
+const removeButton = document.querySelectorAll(".remove-btn");
+
+function removeWishList() {
+  for (let i = 0; i < removeButton.length; i++) {
+    removeButton[i].addEventListener("click", function (event) {
+      event.target.style.display = "none";
+      localStorage.clear(theKey);
+      cartContainer.innerHTML = `<p>There is no item added yet</p>`;
+    });
+  }
+}
+
+removeWishList();

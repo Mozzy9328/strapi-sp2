@@ -21,6 +21,7 @@
             </li>
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
+            <li><a href="add-product.html">Add Product</a></li>
             <li>
               <a style="border-bottom: none" href="cart-page.html">
                 <i class="fa-solid fa-cart-shopping"></i>
@@ -39,12 +40,44 @@
         </div>
       </header>
       <main>
-        <div class="pd-detail-container"></div>
+        <h1>Add Products</h1>
+        <div class="container">
+          <div class="message"></div>
+          <form action="">
+            <div>
+              <input id="name" placeholder="Name" />
+            </div>
+            <div>
+              <input id="price" placeholder="Price" />
+            </div>
+            <div>
+              <input type="text" id="description" placeholder="Description" />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="image-url"
+                id="image-url"
+                placeholder="Enter image url here"
+              />
+            </div>
+            <div style="margin: 10px 0px">
+              <label>Is the product featured? </label>
+              <input
+                style="padding: 5px"
+                type="checkbox"
+                name="featured"
+                id="featured"
+              />
+            </div>
+            <input type="submit" id="add" value="Add Item" />
+          </form>
+        </div>
       </main>
     </div>
     <footer>
       <p>Copyright 2022</p>
     </footer>
-    <script src="js/index.js" type="module"></script>
+    <script src="js/addProduct.js" type="module"></script>
   </body>
 </html>

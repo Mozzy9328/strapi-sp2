@@ -54,20 +54,18 @@ export async function fetchProduct() {
       const dataTitle = this.dataset.title;
       const dataPrice = this.dataset.price;
       const dataImg = url + this.dataset.img;
-      const quantity = 1;
 
       const currentProducts = getFromStorage(theKey);
-      const productExist = currentProducts.findIndex(function (products) {
-        return products.title === dataTitle;
+      const productExist = currentProducts.find(function (products) {
+        return products.id === dataId;
       });
 
-      if (productExist) {
+      if (!productExist) {
         const products = {
           id: dataId,
           title: dataTitle,
           price: dataPrice,
           image: dataImg,
-          quantity: quantity,
         };
         currentProducts.push(products);
         saveToStorage(theKey, currentProducts);
