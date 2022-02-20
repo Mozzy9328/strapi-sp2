@@ -2,13 +2,15 @@ import { getToken } from "./components/localStorage.js";
 import { createNav } from "./components/createNav.js";
 import { displayMessage } from "./components/displayMessage.js";
 import { baseUrl } from "./settings/baseUrl.js";
+import { logOutButton } from "./login.js";
 createNav();
+logOutButton();
 
 const token = getToken();
 
-// if (!token) {
-//   location.href = "/";
-// }
+if (!token) {
+  location.href = "/";
+}
 
 const form = document.querySelector("form");
 const productName = document.querySelector("#name");
@@ -83,12 +85,12 @@ function deleteButton() {
   const inputId = document.querySelector("#id");
 
   inputId.addEventListener("keyup", function () {
-    const idValue = inputId.value;
+    const idValue = inputId.value.trim();
     console.log(idValue);
 
     const deleteBtn = document.querySelector("button.delete");
     deleteBtn.addEventListener("click", async function () {
-      const doDelete = confirm("do you want to delete this product?");
+      const doDelete = confirm(`Is this the RIGHT product id ${idValue}?`);
 
       if (doDelete) {
         const retriveUrl2 = baseUrl + "/products/" + idValue;

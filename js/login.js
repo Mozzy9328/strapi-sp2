@@ -68,7 +68,7 @@ async function fetchCredentials(username, password) {
 
 // Log Out
 
-function logOutButton() {
+export function logOutButton() {
   const logOutBtn = document.querySelector("#logout");
 
   if (logOutBtn) {
