@@ -17,8 +17,8 @@ export function clearStorage() {
 
 // USER & TOKEN
 
-const tokenKey = "token";
-const userKey = "user";
+export const tokenKey = "token";
+export const userKey = "user";
 
 export function saveUser(user) {
   saveToStorage(userKey, user);

@@ -363,6 +363,30 @@ form #submit {
   background-color: #07c407;
 }
 
+.form-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.form-buttons .delete {
+  padding: 6px 12px;
+  background-color: #d15450;
+  cursor: pointer;
+}
+
+.form-buttons #add {
+  padding: 5px 5px;
+  background-color: #008000;
+  cursor: pointer;
+}
+
+#logout {
+  color: #000;
+}
+
 footer {
   -ms-flex-negative: 0;
       flex-shrink: 0;

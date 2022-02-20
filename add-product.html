@@ -61,6 +61,7 @@
                 placeholder="Enter image url here"
               />
             </div>
+            <input id="id" style="display: none" />
             <div style="margin: 10px 0px">
               <label>Is the product featured? </label>
               <input
@@ -70,7 +71,12 @@
                 id="featured"
               />
             </div>
-            <input type="submit" id="add" value="Add Item" />
+            <div class="form-buttons">
+              <button type="submit" id="add">Add Item</button>
+              <div class="delete-cont">
+                <button type="button" class="delete">Delete</button>
+              </div>
+            </div>
           </form>
         </div>
       </main>

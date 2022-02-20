@@ -1,7 +1,8 @@
 import { getToken } from "./components/localStorage.js";
 import { createNav } from "./components/createNav.js";
 import { displayMessage } from "./components/displayMessage.js";
-import { url } from "./settings/baseUrl.js";
+import { baseUrl } from "./settings/baseUrl.js";
+createNav();
 
 const token = getToken();
 
@@ -15,13 +16,14 @@ const productPrice = document.querySelector("#price");
 const productDescription = document.querySelector("#description");
 const productImg = document.querySelector("#image-url");
 const productFeature = document.querySelector("#featured");
-
-createNav();
+const productId = document.querySelector("#id");
 
 form.addEventListener("submit", additem);
 
 function additem(event) {
   event.preventDefault();
+
+  productId.style.display = "block";
 
   const productNameValue = productName.value.trim();
   const priceValue = parseFloat(productPrice.value);
@@ -47,24 +49,22 @@ function additem(event) {
 }
 
 async function retriveProducts(name, price, description, imageUrl, featured) {
-  const retriveUrl = url + "/products";
+  const retriveUrl = baseUrl + "/products";
 
-  const data = JSON.stringify({
-    data: {
-      title: name,
-      price: price,
-      description: description,
-      image_url: imageUrl,
-      featured: featured,
-    },
+  let newData = JSON.stringify({
+    title: name,
+    price: price,
+    description: description,
+    image_url: imageUrl,
+    featured: featured,
   });
 
   const options = {
     method: "POST",
-    body: data,
+    body: newData,
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   };
 
@@ -76,3 +76,41 @@ async function retriveProducts(name, price, description, imageUrl, featured) {
     console.log(error);
   }
 }
+
+//DELETE FUNCTION
+
+function deleteButton() {
+  const inputId = document.querySelector("#id");
+
+  inputId.addEventListener("keyup", function () {
+    const idValue = inputId.value;
+    console.log(idValue);
+
+    const deleteBtn = document.querySelector("button.delete");
+    deleteBtn.addEventListener("click", async function () {
+      const doDelete = confirm("do you want to delete this product?");
+
+      if (doDelete) {
+        const retriveUrl2 = baseUrl + "/products/" + idValue;
+
+        const options2 = {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        };
+
+        try {
+          const response = await fetch(retriveUrl2, options2);
+          const json = await response.json();
+          console.log(json);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    });
+  });
+}
+
+deleteButton();

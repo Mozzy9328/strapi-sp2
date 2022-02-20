@@ -1,6 +1,6 @@
-import { url } from "../settings/baseUrl.js";
-import { theKey } from "../settings/theKey.js";
-import { getFromStorage, saveToStorage } from "../components/localStorage.js";
+import { baseUrl } from "./settings/baseUrl.js";
+import { theKey } from "./settings/theKey.js";
+import { getFromStorage, saveToStorage } from "./components/localStorage.js";
 
 const detailContainer = document.querySelector(".pd-detail-container");
 
@@ -12,7 +12,7 @@ const id = params.get("id");
 
 // console.log(id);
 
-const queryUrl = url + "/products/" + id;
+const queryUrl = baseUrl + "/products/" + id;
 
 export async function fetchProduct() {
   try {
@@ -20,9 +20,9 @@ export async function fetchProduct() {
     const detail = await response.json();
     console.log(detail);
 
-    const allProducts = url + detail.image.url;
+    const allProducts = baseUrl + detail.image.url;
 
-    detailContainer.innerHTML += `
+    detailContainer.innerHTML = `
         <div class="pd-img">
             <img src="${allProducts}"style="margin: 0 auto"/>
         </div>
@@ -42,7 +42,7 @@ export async function fetchProduct() {
     `;
 
     const addToCart = document.querySelector("#add-to-cart");
-    const numberOfItems = document.querySelector(".numberofitems");
+    // const numberOfItems = document.querySelector(".numberofitems");
 
     addToCart.addEventListener("click", handleClick);
 
@@ -53,7 +53,7 @@ export async function fetchProduct() {
       const dataId = this.dataset.id;
       const dataTitle = this.dataset.title;
       const dataPrice = this.dataset.price;
-      const dataImg = url + this.dataset.img;
+      const dataImg = baseUrl + this.dataset.img;
 
       const currentProducts = getFromStorage(theKey);
       const productExist = currentProducts.find(function (products) {

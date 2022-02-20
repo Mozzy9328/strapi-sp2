@@ -1,7 +1,12 @@
-import { url } from "./settings/baseUrl.js";
+import { baseUrl } from "./settings/baseUrl.js";
 import { createNav } from "./components/createNav.js";
 import { displayMessage } from "./components/displayMessage.js";
-import { saveToken, saveUser } from "./components/localStorage.js";
+import {
+  saveToken,
+  saveUser,
+  tokenKey,
+  userKey,
+} from "./components/localStorage.js";
 
 createNav();
 
@@ -27,7 +32,7 @@ function submitForm(event) {
 }
 
 async function fetchCredentials(username, password) {
-  const credUrl = url + "/auth/local";
+  const credUrl = baseUrl + "/auth/local";
 
   const credData = JSON.stringify({
     identifier: username,
@@ -60,3 +65,22 @@ async function fetchCredentials(username, password) {
     console.log(error);
   }
 }
+
+// Log Out
+
+function logOutButton() {
+  const logOutBtn = document.querySelector("#logout");
+
+  if (logOutBtn) {
+    logOutBtn.addEventListener("click", function () {
+      const logOutQuestion = confirm("are you sure you want to logout?");
+
+      if (logOutQuestion === true) {
+        localStorage.removeItem(tokenKey);
+        localStorage.removeItem(userKey);
+      }
+    });
+  }
+}
+
+logOutButton();
