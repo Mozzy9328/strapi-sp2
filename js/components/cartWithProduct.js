@@ -1,6 +1,8 @@
 import { getFromStorage } from "./localStorage.js";
 import { theKey } from "../settings/theKey.js";
+import { numberOfItems } from "./numberOfItems.js";
 // import { url } from "../settings/baseUrl.js";
+numberOfItems();
 
 const theCart = getFromStorage(theKey);
 
@@ -53,7 +55,8 @@ function removeWishList() {
   for (let i = 0; i < removeButton.length; i++) {
     removeButton[i].addEventListener("click", function (event) {
       event.target.style.display = "none";
-      localStorage.clear(theKey);
+      localStorage.removeItem(theKey);
+      localStorage.removeItem("count");
       cartContainer.innerHTML = `<p>There is no item added yet</p>`;
     });
   }

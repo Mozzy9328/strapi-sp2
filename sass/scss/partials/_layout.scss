@@ -89,7 +89,8 @@ PRODUCTS
 
 */
 
-.product-container {
+.product-container,
+.webproduct-container {
   display: flex;
   width: 70%;
   margin: 40px auto;
@@ -143,12 +144,16 @@ PRODUCT DETAIL PAGE
 
 .pd-detail-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 25px auto;
-  width: 90%;
+  width: 70%;
 
   img {
-    max-width: 80%;
+    width: 100%;
+  }
+  p {
+    text-align: center;
+    max-width: 65%;
   }
 }
 
@@ -172,13 +177,21 @@ PRODUCT DETAIL PAGE
 
 .pd-img {
   display: flex;
-  margin: 0 30px;
+  margin: 0 auto;
+  width: 50%;
+
+  @media (max-width: 600px) {
+    & {
+      width: 80%;
+    }
+  }
 }
 
 .pd-btn {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  cursor: pointer;
 
   a {
     background-color: #ffff;
@@ -219,7 +232,11 @@ CART DETAIL PAGE
 
       img {
         width: 100%;
+        height: 170px;
       }
+    }
+    .remove-btn {
+      margin-left: 20px;
     }
     .pl-title {
       margin-left: 20px;

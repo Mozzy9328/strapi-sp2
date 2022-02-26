@@ -16,9 +16,9 @@ const form = document.querySelector("form");
 const productName = document.querySelector("#name");
 const productPrice = document.querySelector("#price");
 const productDescription = document.querySelector("#description");
-const productImg = document.querySelector("#image-url");
 const productFeature = document.querySelector("#featured");
 const productId = document.querySelector("#id");
+const productUrl = document.querySelector("#image-url");
 
 form.addEventListener("submit", additem);
 
@@ -30,7 +30,7 @@ function additem(event) {
   const productNameValue = productName.value.trim();
   const priceValue = parseFloat(productPrice.value);
   const descriptionValue = productDescription.value.trim();
-  const urlValue = productImg.value.trim();
+  const urlValue = productUrl.value;
   const featured = productFeature.checked;
 
   if (
@@ -50,14 +50,14 @@ function additem(event) {
   );
 }
 
-async function retriveProducts(name, price, description, imageUrl, featured) {
+async function retriveProducts(name, price, description, image, featured) {
   const retriveUrl = baseUrl + "/products";
 
   let newData = JSON.stringify({
     title: name,
     price: price,
     description: description,
-    image_url: imageUrl,
+    image_url: image,
     featured: featured,
   });
 
@@ -116,3 +116,32 @@ function deleteButton() {
 }
 
 deleteButton();
+
+// productImg.addEventListener("change", getImage);
+
+// async function getImage(e) {
+//   const uploadUrl = baseUrl + "/upload";
+//   let formData = new FormData();
+//   formData.append("files", e.target.files[0]);
+//   console.log(e.target.files[0]);
+
+//   // let imageSet = {
+//   //   image: formData,
+//   // };
+//   const option2 = {
+//     method: "POST",
+//     body: formData,
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${token}`,
+//     },
+//   };
+
+//   try {
+//     const response2 = await fetch(uploadUrl, option2);
+//     const json2 = await response2.json();
+//     console.log(json2);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
