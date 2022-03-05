@@ -77,12 +77,14 @@ export async function fetchProduct() {
     const numberOfItems = document.querySelector(".numberofitems");
 
     addToCart.addEventListener("click", handleClick);
-
     let count = "0";
+
     function handleClick() {
-      count++;
-      numberOfItems.innerHTML = `${count}`;
-      saveToStorage("count", count);
+      if (theKey) {
+        count++;
+        numberOfItems.innerHTML = `${count}`;
+        saveToStorage("count", count);
+      }
 
       const dataId = this.dataset.id;
       const dataTitle = this.dataset.title;

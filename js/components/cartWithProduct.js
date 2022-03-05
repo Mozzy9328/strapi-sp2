@@ -1,10 +1,10 @@
 import { getFromStorage } from "./localStorage.js";
 import { theKey } from "../settings/theKey.js";
 import { numberOfItems } from "./numberOfItems.js";
-// import { url } from "../settings/baseUrl.js";
 numberOfItems();
 
 const theCart = getFromStorage(theKey);
+console.log(theCart);
 
 const theProductList = document.querySelector(".the-product-list");
 const cartContainer = document.querySelector(".cart-container");
@@ -19,7 +19,6 @@ if (!theCart.length) {
   `;
 } else {
   theCart.forEach((products) => {
-    console.log(products);
     const allProducts = products.image;
     theProductList.innerHTML += `
     <div class="product-group">
@@ -38,17 +37,25 @@ if (!theCart.length) {
         </div>
     </div>
     `;
-    const sumValue = document.querySelector(".sum");
-    let total = 0;
-
-    const price = parseInt(products.price);
-    // total = total + price;
-    console.log(typeof total);
-
-    sumValue.innerHTML += `${total}`;
   });
 }
 
+// TotalSum
+(function getTotalSum() {
+  let total = 0;
+
+  theCart.forEach((products) => {
+    const sumValue = document.querySelector(".sum");
+
+    total += parseFloat(products.price);
+
+    // console.log(typeof total);
+
+    return (sumValue.innerHTML = `Sum: €${total}  `);
+  });
+})();
+
+// REMOVE BUTTON
 const removeButton = document.querySelectorAll(".remove-btn");
 
 function removeWishList() {
@@ -57,8 +64,9 @@ function removeWishList() {
       event.target.style.display = "none";
       localStorage.removeItem(theKey);
       localStorage.removeItem("count");
+      cartContainer.classList.add("noitem");
       cartContainer.innerHTML = `
-      <div style="display:flex; flex-direction:column; text-align:center">
+      <div class="noitem">
         <p>There is no item added yet</p>
         <a href="products.html" <button class="btn"> Continue Shopping </button></a>
       </div>`;

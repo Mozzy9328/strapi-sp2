@@ -30,7 +30,8 @@ body {
   margin-top: 150px;
 
   &:hover {
-    background-color: $secondary-color;
+    background-color: $third-color;
+    transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
     color: #ffff;
   }
 }
@@ -131,20 +132,36 @@ PRODUCT DETAIL PAGE
 .pd-detail-container {
   display: flex;
   flex-direction: row;
-  margin: 25px auto;
-  width: 100%;
+  margin: 50px auto;
+  width: 90%;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+
+    .pd-info {
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .pd-img {
+      display: block;
+      width: 70vw;
+      height: auto;
+    }
+  }
 
   img {
     width: 100%;
-  }
-  p {
-    text-align: center;
-    max-width: 65%;
   }
 }
 
 .pd-info {
   width: 50%;
+  background-color: $third-color;
+  padding: 10px;
+  border-radius: 10%;
+  opacity: 0.8;
 }
 
 .pd-title {
@@ -156,25 +173,13 @@ PRODUCT DETAIL PAGE
     width: 25%;
     margin: 0 auto;
   }
-  h1 {
-    color: #ffff;
-  }
-
-  h2 {
-    color: #ffff;
-  }
 }
 
 .pd-img {
   display: flex;
   margin: 0 auto;
-  width: 50%;
-
-  @media (max-width: 600px) {
-    & {
-      width: 80%;
-    }
-  }
+  width: 400px;
+  height: 450px;
 }
 
 .pd-btn {
@@ -182,18 +187,6 @@ PRODUCT DETAIL PAGE
   justify-content: space-around;
   margin-top: 20px;
   cursor: pointer;
-
-  a {
-    background-color: #ffff;
-    color: #000;
-    padding: 10px;
-    border-radius: 10px;
-
-    &:hover {
-      background-color: $third-color;
-      color: #ffff;
-    }
-  }
 }
 
 /*
@@ -206,14 +199,21 @@ CART DETAIL PAGE
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  background-color: $third-color;
+  width: 60%;
+  padding: 30px;
+  border-radius: 55px;
   margin: 20px auto;
 
-  @media (max-width: 670px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
 
     .the-product-list {
-      align-items: center;
+      .product-group {
+        justify-content: center;
+      }
     }
+
     .sum-product-list {
       text-align: center;
       margin-top: 50px;
@@ -224,13 +224,18 @@ CART DETAIL PAGE
 .the-product-list {
   display: flex;
   flex-direction: column;
-  grid-gap: 30px;
+  grid-gap: 10px;
 
   .product-group {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     .pl-img {
       width: 170px;
+
+      @media (max-width: 620px) {
+        width: 44%;
+      }
 
       img {
         width: 100%;
@@ -244,27 +249,15 @@ CART DETAIL PAGE
     .pl-title {
       margin-left: 20px;
       text-align: center;
-
-      h2 {
-        font-size: 25px;
-        color: #ffff !important;
-      }
-
-      h3 {
-        font-size: 20px;
-      }
-
-      a:hover {
-        color: $secondary-color;
-        border-bottom: 3px solid $secondary-color;
-      }
     }
   }
 }
 
-i:hover {
-  color: $secondary-color;
-  transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
+.noitem {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: $primary-color;
 }
 
 /*
@@ -272,10 +265,6 @@ i:hover {
 LOGIN PAGE
 
 */
-
-// .login-container {
-//   display: flex;
-// }
 
 form {
   margin: 50px auto;
