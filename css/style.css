@@ -530,6 +530,10 @@ a {
   font-weight: 800;
 }
 
+i {
+  font-size: 15px;
+}
+
 i:hover {
   color: #81a6b9;
   -webkit-transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
