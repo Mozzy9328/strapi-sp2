@@ -31,7 +31,7 @@ export async function fetchProduct() {
     <div class="pd-img">
         <img src="${webProducts}"style="margin: 0 auto"/>
     </div>
-    <div>
+    <div class="pd-info">
         <div class="pd-title">
             <h1>${detail.title}</h1>
             <h2>€${detail.price}</h2>
@@ -54,7 +54,7 @@ export async function fetchProduct() {
         <div class="pd-img">
             <img src="${storeProducts}"style="margin: 0 auto"/>
         </div>
-        <div>
+        <div class="pd-info">
             <div class="pd-title">
                 <h1>${detail.title}</h1>
                 <h2>€${detail.price}</h2>

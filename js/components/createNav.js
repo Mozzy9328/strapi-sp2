@@ -15,9 +15,9 @@ export function createNav() {
 `;
 
   if (username) {
-    authLink = `<a href="add-product.html" class="${
+    authLink = `<li><a href="add-product.html" class="${
       pathname === "/add-product.html" ? "active" : ""
-    }">Add Products</a>
+    }">Add Products</a></li>
   <button id="logout">Logout: ${username}</button> `;
   }
 
