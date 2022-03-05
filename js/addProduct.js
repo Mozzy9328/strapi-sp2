@@ -12,6 +12,7 @@ if (!token) {
   location.href = "/";
 }
 
+const message = document.querySelector(".message");
 const form = document.querySelector("form");
 const productName = document.querySelector("#name");
 const productPrice = document.querySelector("#price");
@@ -86,31 +87,38 @@ function deleteButton() {
   const inputId = document.querySelector("#id");
   const deleteBtn = document.querySelector("button.delete");
 
+  message.innerHTML = "";
+
   deleteBtn.addEventListener("click", async function () {
     const idValue = inputId.value.trim();
-    console.log(idValue);
-    const doDelete = confirm(`Is this the RIGHT product id ${idValue}?`);
 
-    if (doDelete) {
-      const retriveUrl2 = baseUrl + "/products/" + idValue;
+    if (idValue.length > 0) {
+      console.log(idValue);
+      const doDelete = confirm(`Is this the RIGHT product id ${idValue}?`);
 
-      const options2 = {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      };
+      if (doDelete) {
+        const retriveUrl2 = baseUrl + "/products/" + idValue;
 
-      try {
-        const response = await fetch(retriveUrl2, options2);
-        const json = await response.json();
-        console.log(json);
-      } catch (error) {
-        console.log(error);
+        const options2 = {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        };
+
+        try {
+          const response = await fetch(retriveUrl2, options2);
+          const json = await response.json();
+          console.log(json);
+        } catch (error) {
+          console.log(error);
+        }
       }
+      displayMessage("success", "The item has been removed", ".message");
+    } else {
+      displayMessage("warning", "Insert an Id number", ".message");
     }
-    displayMessage("success", "The item has been removed", ".message");
   });
 }
 

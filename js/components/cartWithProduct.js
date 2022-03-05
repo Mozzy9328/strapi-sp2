@@ -64,7 +64,7 @@ function removeWishList() {
       event.target.style.display = "none";
       localStorage.removeItem(theKey);
       localStorage.removeItem("count");
-      cartContainer.classList.add("noitem");
+      cartContainer.classList.replace("noitem");
       cartContainer.innerHTML = `
       <div class="noitem">
         <p>There is no item added yet</p>
