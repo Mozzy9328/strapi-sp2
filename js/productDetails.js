@@ -28,11 +28,15 @@ export async function fetchProduct() {
       const webProducts = detail.image_url;
 
       detailContainer.innerHTML = `
+      
     <div class="pd-img">
         <img src="${webProducts}"style="margin: 0 auto"/>
     </div>
     <div class="pd-info">
         <div class="pd-title">
+            <p style="text-align: center; color: darkred">
+            This product is not available for purchase online
+            </p>
             <h1>${detail.title}</h1>
             <h2>€${detail.price}</h2>
         </div>
@@ -40,7 +44,6 @@ export async function fetchProduct() {
             <p>${detail.description}</p>
         </div>
         <div class="pd-btn">
-            <a id="add-to-cart" data-id="${detail.id}" data-title="${detail.title}" data-price="${detail.price}" data-img2="${detail.image_url}" >Add To Cart</a>
             <a href="products.html">Continue Shopping</a>
         </div>
     </div>
@@ -78,11 +81,8 @@ export async function fetchProduct() {
     let count = "0";
     function handleClick() {
       count++;
-      numberOfItems.innerHTML = +`${count}`;
+      numberOfItems.innerHTML = `${count}`;
       saveToStorage("count", count);
-
-      // let productItem = localStorage.getItem("product");
-      // productItem = parseInt(productItem);
 
       const dataId = this.dataset.id;
       const dataTitle = this.dataset.title;

@@ -48,6 +48,7 @@ function additem(event) {
     urlValue,
     featured
   );
+  displayMessage("success", "The item has been added", ".message");
 }
 
 async function retriveProducts(name, price, description, image, featured) {
@@ -83,65 +84,34 @@ async function retriveProducts(name, price, description, image, featured) {
 
 function deleteButton() {
   const inputId = document.querySelector("#id");
+  const deleteBtn = document.querySelector("button.delete");
 
-  inputId.addEventListener("keyup", function () {
+  deleteBtn.addEventListener("click", async function () {
     const idValue = inputId.value.trim();
     console.log(idValue);
+    const doDelete = confirm(`Is this the RIGHT product id ${idValue}?`);
 
-    const deleteBtn = document.querySelector("button.delete");
-    deleteBtn.addEventListener("click", async function () {
-      const doDelete = confirm(`Is this the RIGHT product id ${idValue}?`);
+    if (doDelete) {
+      const retriveUrl2 = baseUrl + "/products/" + idValue;
 
-      if (doDelete) {
-        const retriveUrl2 = baseUrl + "/products/" + idValue;
+      const options2 = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
 
-        const options2 = {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        try {
-          const response = await fetch(retriveUrl2, options2);
-          const json = await response.json();
-          console.log(json);
-        } catch (error) {
-          console.log(error);
-        }
+      try {
+        const response = await fetch(retriveUrl2, options2);
+        const json = await response.json();
+        console.log(json);
+      } catch (error) {
+        console.log(error);
       }
-    });
+    }
+    displayMessage("success", "The item has been removed", ".message");
   });
 }
 
 deleteButton();
-
-// productImg.addEventListener("change", getImage);
-
-// async function getImage(e) {
-//   const uploadUrl = baseUrl + "/upload";
-//   let formData = new FormData();
-//   formData.append("files", e.target.files[0]);
-//   console.log(e.target.files[0]);
-
-//   // let imageSet = {
-//   //   image: formData,
-//   // };
-//   const option2 = {
-//     method: "POST",
-//     body: formData,
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//   };
-
-//   try {
-//     const response2 = await fetch(uploadUrl, option2);
-//     const json2 = await response2.json();
-//     console.log(json2);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }

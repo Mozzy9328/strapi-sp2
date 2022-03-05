@@ -23,9 +23,7 @@ export async function getProducts(json) {
           </div>
       </a>    
       </div>`;
-    }
-
-    if (json.image_url) {
+    } else {
       const strapiImg2 = json.image_url;
 
       webProductContainer.innerHTML += `
@@ -44,3 +42,5 @@ export async function getProducts(json) {
     }
   });
 }
+
+getProducts();

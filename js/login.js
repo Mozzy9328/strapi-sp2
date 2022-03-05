@@ -65,7 +65,6 @@ async function fetchCredentials(username, password) {
     console.log(error);
   }
 }
-
 // Log Out
 
 export function logOutButton() {

@@ -7,15 +7,15 @@ export async function getFeaturedProducts(json) {
   features.innerHTML = "";
 
   for (let i = 0; i < json.length; i++) {
-    if (json[i].featured && json[i].image_url) {
-      const image_url = json[i].image_url;
-      features.innerHTML += `
+    if (json[i].featured) {
+      if (json[i].image_url) {
+        features.innerHTML += `
         <div class="product">
           <div class="product-info">
             
             <div class="product-btn"><a href="product-detail.html?id=${json[i].id}">
             <div class="product-img"/>
-              <img src="${image_url}">
+              <img src="${json[i].image_url}">
             </div>
               <h4>${json[i].title}</h4>
               <p>€${json[i].price}</p>
@@ -23,10 +23,9 @@ export async function getFeaturedProducts(json) {
           </div>
   
         </div>`;
-    }
-    if (json[i].featured && json[i].image.url) {
-      const imgUrl = baseUrl + json[i].image.url;
-      features.innerHTML += `
+      } else {
+        const imgUrl = baseUrl + json[i].image.url;
+        features.innerHTML += `
       <div class="product">
         <div class="product-info">
           
@@ -40,6 +39,7 @@ export async function getFeaturedProducts(json) {
         </div>
 
       </div>`;
+      }
     }
   }
 }

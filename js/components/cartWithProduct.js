@@ -57,7 +57,11 @@ function removeWishList() {
       event.target.style.display = "none";
       localStorage.removeItem(theKey);
       localStorage.removeItem("count");
-      cartContainer.innerHTML = `<p>There is no item added yet</p>`;
+      cartContainer.innerHTML = `
+      <div style="display:flex; flex-direction:column; text-align:center">
+        <p>There is no item added yet</p>
+        <a href="products.html" <button class="btn"> Continue Shopping </button></a>
+      </div>`;
     });
   }
 }
