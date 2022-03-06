@@ -267,7 +267,7 @@ CART DETAIL PAGE
   -ms-flex-pack: distribute;
       justify-content: space-around;
   background-color: #1f3a45;
-  width: 60%;
+  width: 80%;
   padding: 30px;
   border-radius: 55px;
   margin: 20px auto;
@@ -279,11 +279,6 @@ CART DETAIL PAGE
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
-  .cart-container .the-product-list .product-group {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
   .cart-container .sum-product-list {
     text-align: center;
@@ -402,6 +397,12 @@ form .checkbox {
   padding: 5px 0px;
   margin: 0px auto;
   text-align: center;
+}
+
+@media (max-width: 430px) {
+  .message {
+    font-size: 15px;
+  }
 }
 
 .message .error,
@@ -685,7 +686,6 @@ ul li img {
 
 .pd-detail-container p {
   text-align: center;
-  max-width: 65%;
 }
 
 .pd-btn a {

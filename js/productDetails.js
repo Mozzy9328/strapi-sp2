@@ -73,6 +73,7 @@ export async function fetchProduct() {
     `;
     }
 
+    // Add to Cart
     const addToCart = document.querySelector("#add-to-cart");
     const numberOfItems = document.querySelector(".numberofitems");
 
@@ -80,11 +81,9 @@ export async function fetchProduct() {
     let count = "0";
 
     function handleClick() {
-      if (theKey) {
-        count++;
-        numberOfItems.innerHTML = `${count}`;
-        saveToStorage("count", count);
-      }
+      count++;
+      numberOfItems.innerHTML = `${count}`;
+      saveToStorage("count", count);
 
       const dataId = this.dataset.id;
       const dataTitle = this.dataset.title;
