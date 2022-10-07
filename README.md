@@ -1,6 +1,6 @@
 # Sunny Daises
 
-![image](https://steady-donut-7290b4.netlify.app/public/uploads/jakob_owens_Jz_J_Syb_P_Fb3s_unsplash_0840f6de0c.jpg)
+![image](https://github.com/Mozzy9328/strapi-sp2/blob/master/public/SunnyDays.png)
 
 An e-commerce website that has both customer-facing and admin sections. Both sections are responsive and the website are populated by a Strapi API supplied by Noroff.
 
@@ -11,14 +11,14 @@ Customer-facing pages:
 Home page
 The home page includes:
 
-- A hero banner with an image that is uploaded to Strapi.
+- A hero banner with an image that is imported from Strapi.
 
 - A list of featured products.
 
 Products page
 The products page includes:
 
-- A list of all products added to Strapi. Each product displays title, price and image. The product also links to its products detail page.
+- A list of all products. Each product displays title, price and image. The product also links to its products detail page.
 
 - A search text box. When searching (filtering), only the products that include the searched text in their title or description will be listed.
 
