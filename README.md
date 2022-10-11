@@ -6,10 +6,8 @@ An e-commerce website that has both customer-facing and admin sections. Both sec
 
 ## Description
 
-Customer-facing pages:
-
 Home page
-The home page includes:
+This is the Customer-facing pages, and it includes:
 
 - A hero banner with an image that is imported from Strapi.
 
@@ -59,7 +57,7 @@ The admin section (apart from the log in form) is only accessible to be logged i
 
 ## Built With
 
-You can list a the tech stack that you've used over here
+Among other tech, these are the main ones:
 
 - [React.js](https://reactjs.org/)
 - [Bootstrap](https://getbootstrap.com)
